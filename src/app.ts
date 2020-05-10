@@ -1,62 +1,43 @@
-// const userName = 'Max'
-// // userName = 'Maximilian'
-// let age = 30
-
-// age = 29
-
-// function add(a: number, b: number) {
-//   let result
-//   result = a + b
-//   return result
-// }
-
-// if (age > 20) {
-//   let isOld = true
-// }
-
-// console.log(isOld)
-
-// console.log(result)
-
-// const add = (a: number, b: number = 1) => a + b
-
-// console.log(add(2, 5))
-
-// const printOutput: (a: number | string) => void = (output) => console.log(output)
-
-// const button = document.querySelector('button')
-
-// if (button) {
-//   button.addEventListener('click', (event) => console.log(event))
-// }
-
-// printOutput(add(5))
-
-const hobbies = ['Sports', 'Cooking']
-const activeHobbies = ['Hiking']
-
-activeHobbies.push(...hobbies)
-
-const person = {
-  firstName: 'Max',
-  age: 30,
+type Admin = {
+  name: string
+  privileges: string[]
 }
 
-const copiedPerson = { ...person }
-
-const add = (...numbers: number[]) => {
-  return numbers.reduce((curResult, curValue) => {
-    return curResult + curValue
-  }, 0)
+type Employee = {
+  name: string
+  startDate: Date
 }
 
-const addedNumbers = add(5, 10, 2, 3.7)
-console.log(addedNumbers)
+// in case of object type it's the combination of these object properties
+type ElevatedEmployee = Admin & Employee
 
-const [hobby1, hobby2, ...remainingHobbies] = hobbies
+const e1: ElevatedEmployee = {
+  name: 'Max',
+  privileges: ['create-server'],
+  startDate: new Date(),
+}
 
-console.log(hobbies, hobby1, hobby2)
+type Combinable = string | number
+type Numeric = number | boolean
 
-const { firstName: userName, age } = person
+// in case of union type is basically the types they have in common
+type Universal = Combinable & Numeric
 
-console.log(userName, age, person)
+// using interface
+// interface Admin {
+//   name: string
+//   privileges: string[]
+// }
+
+// interface Employee {
+//   name: string
+//   startDate: Date
+// }
+
+// interface ElevatedEmployee extends Employee, Admin {}
+
+// const e1: ElevatedEmployee = {
+//   name: 'Max',
+//   privileges: ['create-server'],
+//   startDate: new Date(),
+// }
